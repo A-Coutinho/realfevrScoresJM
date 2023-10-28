@@ -1,0 +1,43 @@
+.jmButton button {
+	margin: 25px 0px;
+	appearance: none;
+	background-color: $button-background;
+	border: $button-border;
+	border-radius: 6px;
+	box-shadow: $button-box-shadow;
+	box-sizing: border-box;
+	color: $button-color;
+	cursor: pointer;
+	display: inline-block;
+	font-family: $button-font-family;
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 20px;
+	padding: 6px 16px;
+	position: relative;
+	text-align: center;
+	text-decoration: none;
+	user-select: none;
+	-webkit-user-select: none;
+	touch-action: manipulation;
+	vertical-align: middle;
+	white-space: nowrap;
+	width: 100%;
+
+	&:focus,
+	&:hover:not(:disabled) {
+		outline: none;
+		background-color: $button-background-focus;
+		border: 1px solid $white;
+		color: $white;
+        --_p: 100%;
+        transition: background-position .4s, background-size 0s;
+	}
+
+	&:disabled {
+		background-color: $button-background-disabled;
+		border-color: rgba(27, 31, 35, .1);
+		color: $grey;
+		cursor: not-allowed;
+	}
+}

@@ -1,0 +1,213 @@
+@import './variables.scss';
+@import './buttons.scss';
+
+body {
+	font: 100% $font-stack;
+	color: $white;
+	background-color: $page-background;
+}
+
+.justMansos {
+	.justMansos__title {
+		text-align: center;
+
+		.justMansos__title--header {
+			font-weight: bold;
+		}
+	}
+
+	.justMansos__data {
+		.justMansos__data--tableWithPrevNext {
+			width: fit-content;
+			margin: auto;
+
+			.jmButtonPrevNext {
+				width: 100%;
+				display: flex;
+
+				.jmButton {
+					width: 50%;
+					padding: 10px;
+				}
+			}
+		}
+	}
+
+	.justMansos__table {
+		.justMansos__table--container {
+			width: fit-content;
+			margin: auto;
+
+			table {
+				width: 100%;
+				border-collapse: collapse;
+				overflow: hidden;
+				box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+
+				th,
+				td {
+					padding: 15px;
+					background-color: rgba(255, 255, 255, 0.2);
+					color: #fff;
+				}
+
+				th {
+					text-align: left;
+				}
+
+				thead {
+					th {
+						background-color: $button-background-disabled;
+						text-align: center;
+						color: $black;
+					}
+				}
+
+				tbody {
+					tr {
+						&:hover {
+							background-color: rgba(255, 255, 255, 0.3);
+						}
+					}
+
+					td {
+						position: relative;
+						border: 1px solid $button-background-focus;
+
+						&.index0 {
+							text-align: left;
+						}
+
+						&.index1 {
+							text-align: center;
+						}
+
+						&:hover {
+							&:before {
+								content: "";
+								position: absolute;
+								left: 0;
+								right: 0;
+								top: -9999px;
+								bottom: -9999px;
+								background-color: rgba(255, 255, 255, 0.2);
+								z-index: -1;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: $screen-xs) {
+	.jmButton button {
+		height: 40px;
+	}
+
+	.justMansos {
+		text-align: center;
+
+		.justMansos__title {
+			.justMansos__title--header {}
+		}
+
+		.justMansos__data {
+			.justMansos__data--round {
+
+				.round__image {
+
+					.round__image--img {
+						width: 100%;
+						height: auto;
+					}
+				}
+			}
+
+			.justMansos__data--buttons {
+
+				.buttons__container {
+					padding: 30px;
+
+					.buttons__container--prev {
+						float: none;
+						width: 100%;
+						margin-bottom: 30px;
+					}
+
+					.buttons__container--next {
+						float: none;
+						width: 100%;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (min-width: $screen-xs) and (max-width: $screen-sm) {
+	.justMansos {
+		text-align: center;
+
+		.justMansos__title {
+			.justMansos__title--header {}
+		}
+
+		.justMansos__data {
+			.justMansos__data--round {
+
+				.round__image {
+
+					.round__image--img {
+						width: 100%;
+						height: auto;
+					}
+				}
+			}
+
+			.justMansos__data--buttons {
+
+				.buttons__container {
+
+					.buttons__container--prev {}
+
+					.buttons__container--next {}
+				}
+			}
+		}
+	}
+}
+
+@media (min-width: $screen-sm) and (max-width: $screen-lg) {
+	.justMansos {
+		text-align: center;
+
+		.justMansos__title {
+			.justMansos__title--header {}
+		}
+
+		.justMansos__data {
+			.justMansos__data--round {
+
+				.round__image {
+
+					.round__image--img {
+						width: 100%;
+						height: auto;
+					}
+				}
+			}
+
+			.justMansos__data--buttons {
+
+				.buttons__container {
+
+					.buttons__container--prev {}
+
+					.buttons__container--next {}
+				}
+			}
+		}
+	}
+}

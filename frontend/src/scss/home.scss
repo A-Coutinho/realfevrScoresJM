@@ -1,0 +1,51 @@
+.realfevrJM__home {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+
+    .realfevrJM__home--listOfPages {
+        display: flex;
+        width: fit-content;
+        margin: auto;
+
+        .homeListContainer {
+            width: fit-content;
+            text-align: center;
+            margin: 50px;
+
+            .homeListImage {
+                width: 100px;
+                height: 100px;
+                margin: auto;
+                background-size: contain;
+                background-repeat: no-repeat;
+            }
+
+            .homeListText {}
+        }
+
+        .listOfPages__weeklyRounds {
+            .listOfPages__weeklyRounds--image {
+                background-image: url('./../img/calendar.png');
+            }
+        }
+
+        .listOfPages__playerList {
+            .listOfPages__playerList--image {
+                background-image: url('./../img/user.png');
+            }
+        }
+
+        .listOfPages__playerWins {
+            .listOfPages__playerWins--image {
+                background-image: url('./../img/trophy.png');
+            }
+        }
+
+        .listOfPages__currentRanking {
+            .listOfPages__currentRanking--image {
+                background-image: url('./../img/ranking.png');
+            }
+        }
+    }
+}

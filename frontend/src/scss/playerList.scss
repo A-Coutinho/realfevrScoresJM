@@ -1,0 +1,21 @@
+.realfevrJM__playerList {
+    .realfevrJM__playerList--listOfPlayers {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-column-gap: 10px;
+        grid-row-gap: 10px;
+        margin: 50px;
+
+        /* space between rows, change as needed */
+        .listOfPlayers_list {
+            width: fit-content;
+            margin: 20px;
+
+            .listOfPlayers_list--name {
+                font-weight: bold ;
+            }
+
+            .listOfPlayers_list--username {}
+        }
+    }
+}
