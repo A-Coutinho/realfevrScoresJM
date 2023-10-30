@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from "react-router-dom";
 import './../scss/app.scss';
+import './../scss/allRounds.scss';
 import { useNavigate } from "react-router-dom";
 
 const AllRounds = () => {
@@ -57,17 +58,17 @@ const AllRounds = () => {
 
     return (
         <div>
-            <div className='justMansos'>
-                <div className='justMansos__title'>
-                    <header className='justMansos__title--header'>
+            <div className='realfevrJM__allRounds'>
+                <div className='realfevrJM__allRounds--title'>
+                    <header className='title--header'>
                         <p>Realfevr JustMansos</p>
                     </header>
                     <p>Round {pageNumber}</p>
                 </div>
-                <div className='justMansos__data'>
-                    <div className='justMansos__data--tableWithPrevNext'>
-                        <div className='justMansos__table'>
-                            <div className="justMansos__table--container">
+                <div className='realfevrJM__allRounds--data'>
+                    <div className='data--tableWithPrevNext'>
+                        <div className='tableWithPrevNext__table'>
+                            <div className="tableWithPrevNext__table--container">
                                 <table>
                                     <thead>
                                         <tr>

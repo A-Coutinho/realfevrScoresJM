@@ -48,64 +48,61 @@ const RoundsWinners = () => {
     }
 
     return (
-        <div>
-            <div className='justMansos'>
-                <div className='justMansos__title'>
-                    <header className='justMansos__title--header'>
-                        <p>Realfevr JustMansos</p>
-                    </header>
-                </div>
-                <div className='justMansos__data'>
-                    {!isWeeklyWinners && (<div className='justMansos__table'>
-                        <div className="justMansos__table--container">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th className='round'>Round</th>
-                                        <th className='team'>Team</th>
-                                        <th className='points'>Points</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {points.map((item, index) => (
-                                        <tr key={index}>
-                                            {Object.values(item).map((val, index) => (
-                                                <td key={index} className={'index' + index}>{val}</td>
-                                            ))}
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>)}
-
-                    {isWeeklyWinners && (<div className='justMansos__table'>
-                        <div className="justMansos__table--container">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th className='team'>Team</th>
-                                        <th className='wins'>Wins</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {pointsWinners.map((item, index) => (
-                                        <tr key={index}>
-                                            {Object.values(item).map((val, index) => (
-                                                <td key={index} className={'index' + index}>{val}</td>
-                                            ))}
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>)}
-                    {!isWeeklyWinners && (<div className='jmButton'><button onClick={(event) => changeList(event)}>Number of Weekly Winners</button></div>)}
-                    {isWeeklyWinners && (<div className='jmButton'><button onClick={(event) => goBackToList(event)}>Back</button></div>)}
-                    {!isWeeklyWinners && (<div className='jmButton'><button onClick={(event) => goHome(event)}>Home</button></div>)}
-                </div>
+        <div className='realfevrJM__roundsWinners'>
+            <div className='realfevrJM__roundsWinners--title'>
+                <header className='title--header'>
+                    <p>Realfevr JustMansos</p>
+                </header>
             </div>
+            <div className='realfevrJM__roundsWinners--data'>
+                <div className='data__table'>
+                    <div className="data__table--container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th className='round'>Round</th>
+                                    <th className='team'>Team</th>
+                                    <th className='points'>Points</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {points.map((item, index) => (
+                                    <tr key={index}>
+                                        {Object.values(item).map((val, index) => (
+                                            <td key={index} className={'index' + index}>{val}</td>
+                                        ))}
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
 
+                {isWeeklyWinners && (<div className='data__table'>
+                    <div className="data__table--container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th className='team'>Team</th>
+                                    <th className='wins'>Wins</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {pointsWinners.map((item, index) => (
+                                    <tr key={index}>
+                                        {Object.values(item).map((val, index) => (
+                                            <td key={index} className={'index' + index}>{val}</td>
+                                        ))}
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>)}
+            </div>
+            {!isWeeklyWinners && (<div className='jmButton'><button onClick={(event) => changeList(event)}>Show weekly winners</button></div>)}
+            {isWeeklyWinners && (<div className='jmButton'><button onClick={(event) => goBackToList(event)}>Hide weekly winners</button></div>)}
+            <div className='jmButton'><button onClick={(event) => goHome(event)}>Home</button></div>
         </div>
     )
 }

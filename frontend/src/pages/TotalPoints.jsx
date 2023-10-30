@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import './../scss/app.scss';
+import './../scss/totalPoints.scss';
 
 const TotalPoints = () => {
 
@@ -37,33 +38,31 @@ const TotalPoints = () => {
 
     return (
         <div>
-            <div className='justMansos'>
-                <div className='justMansos__title'>
-                    <header className='justMansos__title--header'>
+            <div className='realfevrJM__totalPoints'>
+                <div className='realfevrJM__totalPoints--title'>
+                    <header className='title--header'>
                         <p>Realfevr JustMansos Standings</p>
                     </header>
                 </div>
-                <div className='justMansos__data'>
-                    <div className='justMansos__data--totalPoints'>
-                        <div className='justMansos__table'>
-                            <div className="justMansos__table--container">
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th className='team'>Team</th>
-                                            <th className='points'>Total Points</th>
+                <div className='realfevrJM__totalPoints--data'>
+                    <div className='data__table'>
+                        <div className="data__table--container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th className='team'>Team</th>
+                                        <th className='points'>Total Points</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {points.map((item, index) => (
+                                        <tr key={item["ID"]}>
+                                            <td className='team' onClick={(event) => handleSubmit(event, item["ID"])}>{item["TEAM"]}</td>
+                                            <td className='points'>{item["TOTAL"]}</td>
                                         </tr>
-                                    </thead>
-                                    <tbody>
-                                        {points.map((item, index) => (
-                                            <tr key={item["ID"]}>
-                                                <td onClick={(event) => handleSubmit(event, item["ID"])}>{item["TEAM"]}</td>
-                                                <td>{item["TOTAL"]}</td>
-                                            </tr>
-                                        ))}
-                                    </tbody>
-                                </table>
-                            </div>
+                                    ))}
+                                </tbody>
+                            </table>
                         </div>
                         <div className='jmButton'><button onClick={(event) => goHome(event)}>Go Home</button></div>
                     </div>

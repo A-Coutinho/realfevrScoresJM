@@ -1,21 +1,19 @@
 @import './variables.scss';
 
-.realfevrJM__roundsWinners {
+.realfevrJM__playerRounds {
     width: fit-content;
     margin: auto;
 
-    .realfevrJM__roundsWinners--title {
+    .realfevrJM__playerRounds--title {
+        text-align: center;
+
         .title--header {}
     }
 
-    .realfevrJM__roundsWinners--data {
+    .realfevrJM__playerRounds--data {
         width: fit-content;
         margin: auto;
         display: flex;
-
-        :nth-child(2) {
-            margin: auto 0px auto 50px;
-        }
 
         .data__table {
             .data__table--container {
@@ -57,14 +55,7 @@
                         td {
                             position: relative;
                             border: 1px solid $button-background-focus;
-
-                            &.index0 {
-                                text-align: left;
-                            }
-
-                            &.index1 {
-                                text-align: center;
-                            }
+                            text-align: center;
 
                             &:hover {
                                 &:before {

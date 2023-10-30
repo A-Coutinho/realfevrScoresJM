@@ -1,21 +1,17 @@
 @import './variables.scss';
 
-.realfevrJM__roundsWinners {
+.realfevrJM__totalPoints {
     width: fit-content;
     margin: auto;
 
-    .realfevrJM__roundsWinners--title {
+    .realfevrJM__totalPoints--title {
         .title--header {}
     }
 
-    .realfevrJM__roundsWinners--data {
+    .realfevrJM__totalPoints--data {
         width: fit-content;
         margin: auto;
         display: flex;
-
-        :nth-child(2) {
-            margin: auto 0px auto 50px;
-        }
 
         .data__table {
             .data__table--container {
@@ -58,11 +54,13 @@
                             position: relative;
                             border: 1px solid $button-background-focus;
 
-                            &.index0 {
+                            &.team {
                                 text-align: left;
+                                cursor: pointer;
+                                text-decoration: underline;
                             }
 
-                            &.index1 {
+                            &.points {
                                 text-align: center;
                             }
 

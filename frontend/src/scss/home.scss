@@ -1,3 +1,6 @@
+@import './app.scss';
+
+
 .realfevrJM__home {
     display: flex;
     width: 100vw;
@@ -49,3 +52,77 @@
         }
     }
 }
+
+@media (max-width: $screen-xs) {
+    .realfevrJM__home {
+        .realfevrJM__home--listOfPages {
+            display: inline-block;
+
+            .homeListContainer {
+                margin: 50px auto;
+
+                .homeListImage {
+                    width: 50px;
+                    height: 50px;
+                }
+
+                .homeListText {}
+            }
+
+            .listOfPages__weeklyRounds {
+                .listOfPages__weeklyRounds--image {}
+            }
+
+            .listOfPages__playerList {
+                .listOfPages__playerList--image {}
+            }
+
+            .listOfPages__playerWins {
+                .listOfPages__playerWins--image {}
+            }
+
+            .listOfPages__currentRanking {
+                .listOfPages__currentRanking--image {}
+            }
+        }
+    }
+}
+
+@media (min-width: $screen-xs) and (max-width: $screen-lg) {
+    .realfevrJM__home {
+        .realfevrJM__home--listOfPages {
+            display: inline-block;
+            width: 100%;
+
+            .homeListContainer {
+                width: 50%;
+                margin: 50px 0px;
+                display: inline-block;
+
+                .homeListImage {
+                    width: 75px;
+                    height: 75px;
+                }
+
+                .homeListText {}
+            }
+
+            .listOfPages__weeklyRounds {
+                .listOfPages__weeklyRounds--image {}
+            }
+
+            .listOfPages__playerList {
+                .listOfPages__playerList--image {}
+            }
+
+            .listOfPages__playerWins {
+                .listOfPages__playerWins--image {}
+            }
+
+            .listOfPages__currentRanking {
+                .listOfPages__currentRanking--image {}
+            }
+        }
+    }
+}
+

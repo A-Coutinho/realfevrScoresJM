@@ -1,0 +1,120 @@
+@import './variables.scss';
+
+.realfevrJM__allRounds {
+    .realfevrJM__allRounds--title {
+        text-align: center;
+
+        .title--header {
+            font-weight: bold;
+            text-align: center;
+        }
+    }
+
+    .realfevrJM__allRounds--data {
+        .data--tableWithPrevNext {
+            .tableWithPrevNext__table {
+                .tableWithPrevNext__table--container {
+                    width: fit-content;
+                    margin: auto;
+
+                    table {
+                        width: 100%;
+                        border-collapse: collapse;
+                        overflow: hidden;
+                        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+
+                        th,
+                        td {
+                            padding: 15px;
+                            background-color: rgba(255, 255, 255, 0.2);
+                            color: #fff;
+                        }
+
+                        th {
+                            text-align: left;
+                        }
+
+                        thead {
+                            th {
+                                background-color: $button-background-disabled;
+                                text-align: center;
+                                color: $black;
+                            }
+                        }
+
+                        tbody {
+                            tr {
+                                &:hover {
+                                    background-color: rgba(255, 255, 255, 0.3);
+                                }
+                            }
+
+                            td {
+                                position: relative;
+                                border: 1px solid $button-background-focus;
+
+                                &.index0 {
+                                    text-align: left;
+                                }
+
+                                &.index1 {
+                                    text-align: center;
+                                }
+
+                                &:hover {
+                                    &:before {
+                                        content: "";
+                                        position: absolute;
+                                        left: 0;
+                                        right: 0;
+                                        top: -9999px;
+                                        bottom: -9999px;
+                                        background-color: rgba(255, 255, 255, 0.2);
+                                        z-index: -1;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+.justMansos,
+.realfevrJM {
+    .justMansos__title {
+        text-align: center;
+
+        .justMansos__title--header {
+            font-weight: bold;
+        }
+    }
+
+    .justMansos__data,
+    .realfevrJM__allRounds--data {
+        .data--tableWithPrevNext {
+            width: fit-content;
+            margin: auto;
+
+            .jmButtonPrevNext {
+                width: 100%;
+                display: flex;
+
+                .jmButton {
+                    width: 50%;
+                    padding: 10px;
+                }
+            }
+        }
+    }
+
+    .justMansos__table,
+    .tableWithPrevNext__table {
+
+        .justMansos__table--container,
+        .tableWithPrevNext__table--container {}
+    }
+}

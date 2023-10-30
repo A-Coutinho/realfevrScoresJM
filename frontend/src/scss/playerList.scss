@@ -1,21 +1,39 @@
+@import './variables.scss';
+
 .realfevrJM__playerList {
     .realfevrJM__playerList--listOfPlayers {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-column-gap: 10px;
-        grid-row-gap: 10px;
-        margin: 50px;
+        grid-row-gap: 50px;
+        width: 100%;
+        margin: 40px 0px;
 
         /* space between rows, change as needed */
         .listOfPlayers_list {
-            width: fit-content;
-            margin: 20px;
+            cursor: pointer;
 
-            .listOfPlayers_list--name {
-                font-weight: bold ;
+            &:focus,
+            &:hover {
+                background-color: $button-background-focus;
             }
 
-            .listOfPlayers_list--username {}
+            .listOfPlayers_list--icon {
+                width: 40px;
+                height: 40px;
+                background-image: url('./../img/player.png');
+                background-size: contain;
+                margin: auto;
+            }
+
+            .listOfPlayers_list--name {
+                font-weight: bold;
+                text-align: center;
+            }
+
+            .listOfPlayers_list--username {
+                text-align: center;
+            }
         }
     }
 }
