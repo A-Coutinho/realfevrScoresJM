@@ -1,16 +1,20 @@
 import express from "express";
 import mysql from 'mysql';
 import cors from 'cors';
+import dotenv from "dotenv";
 
+dotenv.config();
 const app = express(); 
 app.use(cors());
 
 const db = mysql.createConnection({
-    host: "localhost",
-    database: "realfevrleaguejm",
-    user: "root",
-    password: "new_password"
+    host: process.env.MYSQL_HOST,
+    database: process.env.MYSQL_DABA,
+    user: process.env.MYSQL_USER,
+    password: process.env.MYSQL_PASS
 });
+
+console.log(db.config.password);
 
 app.get("/", (req, res) => {
     res.json("hello this is backend");
@@ -52,5 +56,5 @@ app.get("/allRounds/:round", (req, res) => {
 });
 
 app.listen(8800, () => {
-    console.log("conmnectc tro backend");
+    console.log("connected to backend");
 });
