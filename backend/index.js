@@ -33,7 +33,6 @@ app.get("/totalPoints", (req, res) => {
         var request = new sql.Request();
         request.query(q, function (err, recordset) {
             if (err) console.log(err)
-            console.log(recordset.recordset)
             res.send(recordset.recordset);
         });
     });
@@ -71,6 +70,18 @@ app.get("/listOfPlayers", (req, res) => {
         request.query(q, function (err, recordset) {
             if (err) console.log(err)
             res.send(recordset.recordset);
+        });
+    });
+});
+
+app.get("/numberOfRounds", (req, res) => {
+    const q = "select max(number) as numberofrounds from rounds";
+    sql.connect(sqlConfig, function (err) {
+        if (err) console.log(err);
+        var request = new sql.Request();
+        request.query(q, function (err, recordset) {
+            if (err) console.log(err)
+            res.send(recordset.recordset[0]);
         });
     });
 });
