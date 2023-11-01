@@ -1,6 +1,3 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { useParams } from "react-router-dom";
 import './../scss/app.scss';
 import './../scss/home.scss';
 import { useNavigate } from "react-router-dom";

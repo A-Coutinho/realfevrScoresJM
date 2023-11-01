@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams } from "react-router-dom";
 import './../scss/app.scss';
 import './../scss/allRounds.scss';
 import { useNavigate } from "react-router-dom";
@@ -8,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 const AllRounds = () => {
     const [rounds, setRounds] = useState([]);
     const [pageNumber, setCount] = useState(1);
-    const params = useParams();
     const navigate = useNavigate();
 
     const numberOfRounds = 8;
@@ -16,11 +14,11 @@ const AllRounds = () => {
     const disableNext = shouldDisableNext();
 
     function shouldDisablePrev() {
-        return pageNumber == 1;
+        return pageNumber === 1;
     }
 
     function shouldDisableNext() {
-        return pageNumber == 8;
+        return pageNumber === 8;
     }
 
     function increment() {
@@ -37,9 +35,9 @@ const AllRounds = () => {
         });
     }
 
-    const axiosURL = "http://localhost:8800/allRounds/" + pageNumber;
 
     useEffect(() => {
+        const axiosURL = "http://localhost:8800/allRounds/" + pageNumber;
         const fetchRound = async () => {
             try {
                 const res = await axios.get(axiosURL);

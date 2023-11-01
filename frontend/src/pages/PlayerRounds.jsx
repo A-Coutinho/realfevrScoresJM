@@ -9,8 +9,6 @@ const PlayerRounds = () => {
     const [points, setPoints] = useState([]);
     const [player, setPlayer] = useState([]);
     const params = useParams();
-    const axiosURL = "http://localhost:8800/playerRounds/" + params.player;
-    const axiosURLPlayer = "http://localhost:8800/players/" + params.player;
     const navigate = useNavigate();
 
     function goHome(event) {
@@ -19,6 +17,7 @@ const PlayerRounds = () => {
     }
 
     useEffect(() => {
+        const axiosURL = "http://localhost:8800/playerRounds/" + params.player;
         const fetchAllPoints = async () => {
             try {
                 const res = await axios.get(axiosURL);
@@ -28,9 +27,8 @@ const PlayerRounds = () => {
             }
         };
         fetchAllPoints();
-    }, []);
 
-    useEffect(() => {
+        const axiosURLPlayer = "http://localhost:8800/players/" + params.player;
         const fetchPlayer = async () => {
             try {
                 const res = await axios.get(axiosURLPlayer);
@@ -40,7 +38,7 @@ const PlayerRounds = () => {
             }
         };
         fetchPlayer();
-    }, []);
+    }, [params]);
 
     return (
         <div>
