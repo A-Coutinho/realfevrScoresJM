@@ -1,10 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { useParams } from "react-router-dom";
 import './../scss/app.scss';
 import './../scss/home.scss';
 import { useNavigate } from "react-router-dom";
-
 
 const Home = () => {
     const navigate = useNavigate();
@@ -13,7 +9,7 @@ const Home = () => {
         navigate("/" + event.currentTarget.id);
     }
 
-    return (        
+    return (
         <div className='realfevrJM__home'>
             <div className='realfevrJM__home--listOfPages'>
                 <div onClick={(event) => goPage(event)} id='AllRounds' className='listOfPages__weeklyRounds homeListContainer'>
@@ -35,6 +31,13 @@ const Home = () => {
                     <div className='listOfPages__currentRanking--image homeListImage'></div>
                     <div className='listOfPages__currentRanking--text homeListText'>Current Ranking</div>
                 </div>
+
+                {/* 
+                <div onClick={(event) => goPage(event)} id='Login' className='listOfPages__login homeListContainer'>
+                    <div className='listOfPages__login--image homeListImage'></div>
+                    <div className='listOfPages__login--text homeListText'>Login</div>
+                </div>
+                */}
             </div>
         </div>
     )

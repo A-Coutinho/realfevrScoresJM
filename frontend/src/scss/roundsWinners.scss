@@ -85,3 +85,110 @@
         }
     }
 }
+
+@media (max-width: $screen-xs) {
+    .realfevrJM__roundsWinners {
+        font-size: 13px;
+
+        .realfevrJM__roundsWinners--title {
+            .title--header {}
+        }
+
+        .realfevrJM__roundsWinners--data {
+            display: inline-block;
+
+            :nth-child(2) {
+                margin: 25px auto;
+            }
+
+            .data__table {
+                .data__table--container {
+
+                    table {
+
+                        th,
+                        td {}
+
+                        th {}
+
+                        thead {
+                            th {}
+                        }
+
+                        tbody {
+                            tr {
+                                &:hover {}
+                            }
+
+                            td {
+
+                                &.round {
+                                    text-align: center;
+                                }
+
+                                &.team {}
+
+                                &.points {
+                                    text-align: center;
+
+                                }
+
+                                &:hover {
+                                    &:before {}
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: $screen-xs) and (max-width: $screen-lg) {
+    .realfevrJM__roundsWinners {
+
+        .realfevrJM__roundsWinners--title {
+            .title--header {}
+        }
+
+        .realfevrJM__roundsWinners--data {
+
+            :nth-child(2) {}
+
+            .data__table {
+                .data__table--container {
+
+                    table {
+
+                        th,
+                        td {}
+
+                        th {}
+
+                        thead {
+                            th {}
+                        }
+
+                        tbody {
+                            tr {
+                                &:hover {}
+                            }
+
+                            td {
+
+                                &.index0 {}
+
+                                &.index1 {}
+
+                                &:hover {
+                                    &:before {}
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

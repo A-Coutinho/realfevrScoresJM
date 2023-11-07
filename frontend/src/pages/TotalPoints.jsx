@@ -14,7 +14,7 @@ const TotalPoints = () => {
     useEffect(() => {
         const fetchAllPoints = async () => {
             try {
-                const res = await axios.get("http://localhost:8800/totalPoints");
+                const res = await axios.get("http://192.168.2.45:8800/totalPoints");
                 setPoints(res.data);
             } catch (err) {
                 console.log(err);
@@ -40,9 +40,6 @@ const TotalPoints = () => {
         <div>
             <div className='realfevrJM__totalPoints'>
                 <div className='realfevrJM__totalPoints--title'>
-                    <header className='title--header'>
-                        <p>Realfevr JustMansos Standings</p>
-                    </header>
                 </div>
                 <div className='realfevrJM__totalPoints--data'>
                     <div className='data__table'>
@@ -51,7 +48,7 @@ const TotalPoints = () => {
                                 <thead>
                                     <tr>
                                         <th className='team'>Team</th>
-                                        <th className='points'>Total Points</th>
+                                        <th className='points'>Points</th>
                                     </tr>
                                 </thead>
                                 <tbody>

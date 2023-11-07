@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams } from "react-router-dom";
 import './../scss/app.scss';
 import './../scss/playerList.scss';
 import { useNavigate } from "react-router-dom";
@@ -13,7 +12,7 @@ const PlayerList = () => {
     useEffect(() => {
         const fetchPlayerList = async () => {
             try {
-                const res = await axios.get("http://localhost:8800/listOfPlayers");
+                const res = await axios.get("http://192.168.2.45:8800/listOfPlayers");
                 setPlayers(res.data);
             } catch (err) {
                 console.log(err);

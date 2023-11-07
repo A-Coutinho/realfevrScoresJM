@@ -12,6 +12,9 @@
 
     .realfevrJM__allRounds--data {
         .data--tableWithPrevNext {
+            width: fit-content;
+            margin: auto;
+
             .tableWithPrevNext__table {
                 .tableWithPrevNext__table--container {
                     width: fit-content;
@@ -39,6 +42,21 @@
                                 background-color: $button-background-disabled;
                                 text-align: center;
                                 color: $black;
+
+                                &.round {
+                                    text-align: center;
+                                }
+
+                                &.team {
+                                    text-align: center;
+                                }
+
+                                &.coach {
+                                }
+
+                                &.points {
+                                    text-align: center;
+                                }
                             }
                         }
 
@@ -53,11 +71,18 @@
                                 position: relative;
                                 border: 1px solid $button-background-focus;
 
-                                &.index0 {
+                                &.round {
+                                    text-align: center;
+                                }
+
+                                &.team {
                                     text-align: left;
                                 }
 
-                                &.index1 {
+                                &.coach {
+                                }
+
+                                &.points {
                                     text-align: center;
                                 }
 
@@ -78,27 +103,6 @@
                     }
                 }
             }
-        }
-    }
-}
-
-
-.justMansos,
-.realfevrJM {
-    .justMansos__title {
-        text-align: center;
-
-        .justMansos__title--header {
-            font-weight: bold;
-        }
-    }
-
-    .justMansos__data,
-    .realfevrJM__allRounds--data {
-        .data--tableWithPrevNext {
-            width: fit-content;
-            margin: auto;
-
             .jmButtonPrevNext {
                 width: 100%;
                 display: flex;
@@ -110,11 +114,182 @@
             }
         }
     }
+}
 
-    .justMansos__table,
-    .tableWithPrevNext__table {
+@media (max-width: $screen-xs){
+    .realfevrJM__allRounds {
+        font-size: 13px;
+        .realfevrJM__allRounds--title {
+    
+            .title--header {
+            }
+        }
+    
+        .realfevrJM__allRounds--data {
+            .data--tableWithPrevNext {
+    
+                .tableWithPrevNext__table {
+                    .tableWithPrevNext__table--container {
+    
+                        table {
+    
+                            th,
+                            td {
+                                padding: 11px;
+                            }
+    
+                            th {
+                            }
+    
+                            thead {
+                                th {
+    
+                                    &.round {
+                                    }
+    
+                                    &.team {
+                                    }
+    
+                                    &.coach {
+                                        display: none;
+                                    }
+    
+                                    &.points {
+                                    }
+                                }
+                            }
+    
+                            tbody {
+                                tr {
+                                    &:hover {
+                                    }
+                                }
+    
+                                td {
+    
+                                    &.round {
+                                    }
+    
+                                    &.team {
+                                    }
+    
+                                    &.coach {
+                                        display: none;
+                                    }
+    
+                                    &.points {
+                                    }
+    
+                                    &:hover {
+                                        &:before {
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .jmButtonPrevNext {
+    
+                    .jmButton {
+                        button{
+                            margin: 15px 0px; 
+                        }
+                    }
+                }
 
-        .justMansos__table--container,
-        .tableWithPrevNext__table--container {}
+                .buttons__container--next{
+                    button{
+                        margin: 0px; 
+                    }
+                }
+            }
+        }
     }
 }
+
+@media (min-width: $screen-xs) and (max-width: $screen-md) {
+    .realfevrJM__allRounds {
+        font-size: 16px;
+        .realfevrJM__allRounds--title {
+    
+            .title--header {
+            }
+        }
+    
+        .realfevrJM__allRounds--data {
+            .data--tableWithPrevNext {
+    
+                .tableWithPrevNext__table {
+                    .tableWithPrevNext__table--container {
+    
+                        table {
+    
+                            th,
+                            td {
+                            }
+    
+                            th {
+                            }
+    
+                            thead {
+                                th {
+    
+                                    &.round {
+                                    }
+    
+                                    &.team {
+                                    }
+    
+                                    &.coach {
+                                        display: none;
+                                    }
+    
+                                    &.points {
+                                    }
+                                }
+                            }
+    
+                            tbody {
+                                tr {
+                                    &:hover {
+                                    }
+                                }
+    
+                                td {
+    
+                                    &.round {
+                                    }
+    
+                                    &.team {
+                                    }
+    
+                                    &.coach {
+                                        display: none;
+                                    }
+    
+                                    &.points {
+                                    }
+    
+                                    &:hover {
+                                        &:before {
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .jmButtonPrevNext {
+    
+                    .jmButton {
+                        button{
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+

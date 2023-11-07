@@ -13,7 +13,7 @@ const RoundsWinners = () => {
     useEffect(() => {
         const fetchWeeklyList = async () => {
             try {
-                const res = await axios.get("http://localhost:8800/roundsWinners");
+                const res = await axios.get("http://192.168.2.45:8800/roundsWinners");
                 setPoints(res.data);
             } catch (err) {
                 console.log(err);
@@ -23,7 +23,7 @@ const RoundsWinners = () => {
 
         const fetchWeeklyWinnersList = async () => {
             try {
-                const res = await axios.get("http://localhost:8800/roundsWinnersByTimes");
+                const res = await axios.get("http://192.168.2.45:8800/roundsWinnersByTimes");
                 setPointsWinners(res.data);
             } catch (err) {
                 console.log(err);
@@ -50,9 +50,6 @@ const RoundsWinners = () => {
     return (
         <div className='realfevrJM__roundsWinners'>
             <div className='realfevrJM__roundsWinners--title'>
-                <header className='title--header'>
-                    <p>Realfevr JustMansos</p>
-                </header>
             </div>
             <div className='realfevrJM__roundsWinners--data'>
                 <div className='data__table'>
@@ -60,17 +57,17 @@ const RoundsWinners = () => {
                         <table>
                             <thead>
                                 <tr>
-                                    <th className='round'>Round</th>
+                                    <th className='round'>#</th>
                                     <th className='team'>Team</th>
                                     <th className='points'>Points</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {points.map((item, index) => (
-                                    <tr key={index}>
-                                        {Object.values(item).map((val, index) => (
-                                            <td key={index} className={'index' + index}>{val}</td>
-                                        ))}
+                                    <tr key={index + 1}>
+                                        <td className='round'>{index + 1}</td>
+                                        <td className='team'>{item["NAME"]}</td>
+                                        <td className='points'>{item["points"]}</td>
                                     </tr>
                                 ))}
                             </tbody>

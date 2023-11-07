@@ -37,3 +37,54 @@
         }
     }
 }
+
+@media (max-width: $screen-xs){
+    .realfevrJM__playerList {
+        font-size: 13px;
+
+        .realfevrJM__playerList--listOfPlayers {
+        grid-template-columns: repeat(2, 1fr);
+
+            .listOfPlayers_list {
+    
+                &:focus,
+                &:hover {
+                }
+    
+                .listOfPlayers_list--icon {
+                }
+    
+                .listOfPlayers_list--name {
+                }
+    
+                .listOfPlayers_list--username {
+                }
+            }
+        }
+    }
+}
+@media (min-width: $screen-xs) and (max-width: $screen-sm){
+    .realfevrJM__playerList {
+        font-size: 15px;
+
+        .realfevrJM__playerList--listOfPlayers {
+        grid-template-columns: repeat(2, 1fr);
+
+            .listOfPlayers_list {
+    
+                &:focus,
+                &:hover {
+                }
+    
+                .listOfPlayers_list--icon {
+                }
+    
+                .listOfPlayers_list--name {
+                }
+    
+                .listOfPlayers_list--username {
+                }
+            }
+        }
+    }
+}
