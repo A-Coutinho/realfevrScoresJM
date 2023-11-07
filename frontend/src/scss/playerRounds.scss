@@ -4,6 +4,13 @@
     width: fit-content;
     margin: auto;
 
+    &.true {
+        width: 80%;
+        .realfevrJMChart {
+            margin: auto;
+        }
+    }
+
     .realfevrJM__playerRounds--title {
         text-align: center;
 
@@ -13,7 +20,6 @@
     .realfevrJM__playerRounds--data {
         width: fit-content;
         margin: auto;
-        display: flex;
 
         .data__table {
             .data__table--container {
@@ -76,3 +82,50 @@
         }
     }
 }
+
+@media (max-width: $screen-xs) {
+    .realfevrJM__playerRounds {
+        font-size: 13px;
+
+        .realfevrJM__playerRounds--title {
+
+            .title--header {}
+        }
+
+        .realfevrJM__playerRounds--data {
+
+            .data__table {
+                .data__table--container {
+
+                    table {
+
+                        th,
+                        td {}
+
+                        th {}
+
+                        thead {
+                            th {}
+                        }
+
+                        tbody {
+                            tr {
+                                &:hover {}
+                            }
+
+                            td {
+
+                                &:hover {
+                                    &:before {}
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+@media (min-width: $screen-xs) and (max-width: $screen-lg) {}

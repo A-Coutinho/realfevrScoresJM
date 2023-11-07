@@ -22,8 +22,6 @@ function App() {
           <Route path="/RoundsWinnersTotal" element={<RoundsWinnersTotal />} />
           <Route path="/AllRounds" element={<AllRounds />} />
         </Routes>
-
-
       </BrowserRouter>
     </div>
   );

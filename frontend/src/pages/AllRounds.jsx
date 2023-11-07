@@ -41,7 +41,7 @@ const AllRounds = () => {
     useEffect(() => {
         const fetchWeeklyWinnersList = async () => {
             try {
-                const res = await axios.get("http://localhost:8800/numberOfRounds");
+                const res = await axios.get("http://192.168.2.45:8800/numberOfRounds");
                 setNumberOfRounds(res.data['numberofrounds']);
             } catch (err) {
                 console.log(err);
@@ -49,7 +49,7 @@ const AllRounds = () => {
         };
         fetchWeeklyWinnersList();
 
-        const axiosURL = "http://localhost:8800/allRounds/" + pageNumber;
+        const axiosURL = "http://192.168.2.45:8800/allRounds/" + pageNumber;
         const fetchRound = async () => {
             try {
                 const res = await axios.get(axiosURL);
@@ -70,9 +70,6 @@ const AllRounds = () => {
         <div>
             <div className='realfevrJM__allRounds'>
                 <div className='realfevrJM__allRounds--title'>
-                    <header className='title--header'>
-                        <p>Realfevr JustMansos</p>
-                    </header>
                     <p>Round {pageNumber}</p>
                 </div>
                 <div className='realfevrJM__allRounds--data'>

@@ -135,6 +135,7 @@
     
                             th,
                             td {
+                                padding: 11px;
                             }
     
                             th {
@@ -191,6 +192,15 @@
                 .jmButtonPrevNext {
     
                     .jmButton {
+                        button{
+                            margin: 15px 0px; 
+                        }
+                    }
+                }
+
+                .buttons__container--next{
+                    button{
+                        margin: 0px; 
                     }
                 }
             }
@@ -273,6 +283,8 @@
                 .jmButtonPrevNext {
     
                     .jmButton {
+                        button{
+                        }
                     }
                 }
             }

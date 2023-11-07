@@ -83,3 +83,52 @@
         }
     }
 }
+
+@media (max-width: $screen-xs) {
+    .realfevrJM__totalPoints {
+        font-size: 13px;
+
+        .realfevrJM__totalPoints--title {
+            .title--header {}
+        }
+
+        .realfevrJM__totalPoints--data {
+
+            .data__table {
+                .data__table--container {
+
+                    table {
+
+                        th,
+                        td {}
+
+                        th {}
+
+                        thead {
+                            th {}
+                        }
+
+                        tbody {
+                            tr {
+                                &:hover {}
+                            }
+
+                            td {
+
+                                &.team {}
+
+                                &.points {}
+
+                                &:hover {
+                                    &:before {}
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: $screen-xs) and (max-width: $screen-lg) {}

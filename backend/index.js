@@ -27,7 +27,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/totalPoints", (req, res) => {
-    const q = "select * from vw_totalpoints";
+    const q = "select * from vw_totalpoints order by total desc";
     sql.connect(sqlConfig, function (err) {
         if (err) console.log(err);
         var request = new sql.Request();
