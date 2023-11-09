@@ -12,7 +12,7 @@ const PlayerList = () => {
     useEffect(() => {
         const fetchPlayerList = async () => {
             try {
-                const res = await axios.get("http://192.168.2.45:8800/listOfPlayers");
+                const res = await axios.get("http://server2.noslined.com.br:9090/listOfPlayers");
                 setPlayers(res.data);
             } catch (err) {
                 console.log(err);
