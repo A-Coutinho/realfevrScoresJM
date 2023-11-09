@@ -3,6 +3,7 @@ import mysql from 'mysql';
 import cors from 'cors';
 import dotenv from "dotenv";
 import sql from "mssql";
+import bodyParser from 'body-parser';
 
 dotenv.config();
 const app = express();
@@ -118,6 +119,30 @@ app.get("/allRounds/:round", (req, res) => {
         request.input('roundparam', sql.VarChar, req.params.round).query(q, function (err, recordset) {
             if (err) console.log(err)
 
+            res.send(recordset.recordset);
+        });
+    });
+});
+
+app.use(bodyParser.json());
+app.use(
+    bodyParser.urlencoded({
+        extended: true,
+    }),
+);
+
+app.post("/rounds", (req, res) => {
+    const q = "INSERT INTO roundstemp (NUMBER, PLAYERID, POINTS) VALUES (@roundNum, @playerID, @points);";
+    sql.connect(sqlConfig, function (err) {
+        if (err) console.log(err);
+        var request = new sql.Request();
+
+        request.input('roundNum', sql.Int, req.body.round);
+        request.input('playerID', sql.Int, req.body.player);
+        request.input('points', sql.Int, req.body.points);
+
+        request.query(q, function (err, recordset) {
+            if (err) console.log(err)
             res.send(recordset.recordset);
         });
     });

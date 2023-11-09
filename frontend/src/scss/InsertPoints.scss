@@ -1,0 +1,61 @@
+@import './variables.scss';
+
+.realfevrJM__insertPoints {
+    font-size: 20px;
+
+    .realfevrJM__insertPoints--title {
+        text-align: center;
+    }
+
+    .realfevrJM__insertPoints--data {
+        .data__insertData {
+            text-align: center;
+
+            .data__insertData--roundNumberInput {
+                width: fit-content;
+                margin: 30px auto;
+                text-align: center;
+
+                .roundNumberInput__text {
+                    text-align: center;
+
+                }
+
+                .roundNumberInput__input {
+                    input {
+                        width: 3em;
+                        margin: 5px;
+                        text-align: center;
+                        font-size: 20px;
+                    }
+                }
+            }
+
+            .data__insertData--insertPointsList {
+                display: flex;
+                width: 100%;
+
+                .insertPointsList__team {
+                    text-align: right;
+                    width: 50%;
+                    margin: 10px;
+                }
+
+                .insertPointsList__input {
+                    width: 3em;
+                    margin: 5px;
+                    text-align: center;
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+
+    .realfevrJM__insertPoints--submit {
+        text-align: center;
+        margin: 30px;
+        button{
+            font-size: 20px;
+        }
+    }
+}

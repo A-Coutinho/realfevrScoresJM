@@ -8,6 +8,7 @@ import TotalPoints from "./pages/TotalPoints";
 import AllRounds from "./pages/AllRounds";
 import Home from "./pages/Home";
 import PlayerList from "./pages/PlayerList";
+import InsertPoints from "./pages/InsertPoints";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/RoundsWinners" element={<RoundsWinners />} />
           <Route path="/RoundsWinnersTotal" element={<RoundsWinnersTotal />} />
           <Route path="/AllRounds" element={<AllRounds />} />
+          <Route path="/InsertPoints" element={<InsertPoints />} />
         </Routes>
       </BrowserRouter>
     </div>
