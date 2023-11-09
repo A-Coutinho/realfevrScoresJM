@@ -41,7 +41,7 @@ const AllRounds = () => {
     useEffect(() => {
         const fetchWeeklyWinnersList = async () => {
             try {
-                const res = await axios.get("http://192.168.2.45:8800/numberOfRounds");
+                const res = await axios.get("http://server2.noslined.com.br:9090/numberOfRounds");
                 setNumberOfRounds(res.data['numberofrounds']);
             } catch (err) {
                 console.log(err);
@@ -49,7 +49,7 @@ const AllRounds = () => {
         };
         fetchWeeklyWinnersList();
 
-        const axiosURL = "http://192.168.2.45:8800/allRounds/" + pageNumber;
+        const axiosURL = "http://server2.noslined.com.br:9090/allRounds/" + pageNumber;
         const fetchRound = async () => {
             try {
                 const res = await axios.get(axiosURL);
