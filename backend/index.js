@@ -1,7 +1,6 @@
 import express from "express";
-import mysql from 'mysql';
 import cors from 'cors';
-import dotenv from "dotenv";
+import dotenv, { config } from "dotenv";
 import sql from "mssql";
 import bodyParser from 'body-parser';
 
@@ -132,20 +131,31 @@ app.use(
 );
 
 app.post("/rounds", (req, res) => {
-    const q = "INSERT INTO roundstemp (NUMBER, PLAYERID, POINTS) VALUES (@roundNum, @playerID, @points);";
-    sql.connect(sqlConfig, function (err) {
-        if (err) console.log(err);
-        var request = new sql.Request();
+    sql.connect(sqlConfig)
+        .then(() => {
+            console.log('connected');
 
-        request.input('roundNum', sql.Int, req.body.round);
-        request.input('playerID', sql.Int, req.body.player);
-        request.input('points', sql.Int, req.body.points);
+            const table = new sql.Table('roundstemp');
+            table.create = true;
+            
+            table.columns.add('NUMBER', sql.Int, { nullable: false });
+            table.columns.add('PLAYERID', sql.Int, { nullable: false });
+            table.columns.add('POINTS', sql.Int, { nullable: false });
 
-        request.query(q, function (err, recordset) {
-            if (err) console.log(err)
-            res.send(recordset.recordset);
+            var roundNUM = req.body.round['number'];
+            for (var key in req.body.roundInfo) {
+                table.rows.add(roundNUM, key, req.body.roundInfo[key]);
+            }
+
+            const request = new sql.Request();
+            return request.bulk(table);
+        })
+        .then(data => {
+            res.json(data);
+        })
+        .catch(err => {
+            console.log(err);
         });
-    });
 });
 
 app.listen(8800, () => {
