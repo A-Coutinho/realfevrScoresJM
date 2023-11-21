@@ -9,28 +9,51 @@ const RoundsWinners = () => {
     const [pointsWinners, setPointsWinners] = useState([]);
     const [isWeeklyWinners, setIsShown] = useState(false);
     const navigate = useNavigate();
+    const [token, setToken] = useState(null);
 
     useEffect(() => {
-        const fetchWeeklyList = async () => {
-            try {
-                const res = await axios.get("http://server2.noslined.com.br:9090/roundsWinners");
-                setPoints(res.data);
-            } catch (err) {
-                console.log(err);
-            }
-        };
-        fetchWeeklyList();
+        const getToken = async () => {
+            if (token === null) {
+                try {
+                    const headerAxios = {
+                        "Authorization": `Bearer ` + process.env.REACT_APP_JWTKEYDOCARALHO,
+                        "userid": process.env.REACT_APP_JWTUSRDOCARALHO,
+                        "passw": process.env.REACT_APP_JWTPWDDOCARALHO
+                    }
+                    const res = await axios.get("http://server2.noslined.com.br:9090/authToken", { headers: headerAxios });
+                    setToken(res.data.token);
+                } catch (err) {
+                    console.log(err);
+                }
+            };
+        }
+        getToken();
+    }, [token]);
 
-        const fetchWeeklyWinnersList = async () => {
-            try {
-                const res = await axios.get("http://server2.noslined.com.br:9090/roundsWinnersByTimes");
-                setPointsWinners(res.data);
-            } catch (err) {
-                console.log(err);
-            }
+    useEffect(() => {
+        if (token !== null) {
+            const headerAxios = { headers: { "authorization": `Bearer ` + token } };
+            const fetchWeeklyList = async () => {
+                try {
+                    const res = await axios.get("http://server2.noslined.com.br:9090/roundsWinnersSec", headerAxios);
+                    setPoints(res.data);
+                } catch (err) {
+                    console.log(err);
+                }
+            };
+            fetchWeeklyList();
+
+            const fetchWeeklyWinnersList = async () => {
+                try {
+                    const res = await axios.get("http://server2.noslined.com.br:9090/roundsWinnersByTimesSec", headerAxios);
+                    setPointsWinners(res.data);
+                } catch (err) {
+                    console.log(err);
+                }
+            };
+            fetchWeeklyWinnersList();
         };
-        fetchWeeklyWinnersList();
-    }, []);
+    }, [token]);
 
     function goHome(event) {
         event.preventDefault();

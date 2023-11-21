@@ -7,9 +7,29 @@ import { useNavigate } from "react-router-dom";
 const InsertPoints = () => {
     const [players, setPlayers] = useState([]);
     const navigate = useNavigate();
+    const [token, setToken] = useState(null);
 
     const [roundInfo, setRoundInfo] = useState({});
     const [roundNumber, setRoundNumber] = useState({});
+
+    useEffect(() => {
+        const getToken = async () => {
+            if (token === null) {
+                try {
+                    const headerAxios = {
+                        "Authorization": `Bearer ` + process.env.REACT_APP_JWTKEYDOCARALHO,
+                        "userid": process.env.REACT_APP_JWTUSRDOCARALHO,
+                        "passw": process.env.REACT_APP_JWTPWDDOCARALHO
+                    }
+                    const res = await axios.get("http://server2.noslined.com.br:9090/authToken", { headers: headerAxios });
+                    setToken(res.data.token);
+                } catch (err) {
+                    console.log(err);
+                }
+            };
+        }
+        getToken();
+    }, [token]);
 
     const handleRoundChange = (e) => {
         if (!isNaN(e.target.value)) setRoundNumber((prev) => ({ ...prev, "number": e.target.value }));
@@ -22,28 +42,33 @@ const InsertPoints = () => {
     console.log(roundInfo);
 
     useEffect(() => {
-        const fetchPlayerList = async () => {
+        if (token !== null) {
+            const headerAxios = { headers: { "authorization": `Bearer ` + token } };
+            const fetchPlayerList = async () => {
+
+                try {
+                    const res = await axios.get("http://server2.noslined.com.br:9090/listOfPlayersSec", headerAxios);
+                    setPlayers(res.data);
+                } catch (err) {
+                    console.log(err);
+                }
+            };
+            fetchPlayerList();
+        };
+    }, [token]);
+
+    const submitPoints = async (e) => {
+        if (token !== null) {
             try {
-                const res = await axios.get("http://server2.noslined.com.br:9090/listOfPlayers");
-                setPlayers(res.data);
+                let params = { headers: { "authorization": `Bearer ` + token }, 'round': roundNumber, 'roundInfo': roundInfo };
+                await axios.post("http://server2.noslined.com.br:9090/roundsSec", params)
+                    .then((response) => {
+                        navigate("/");
+                    });
             } catch (err) {
                 console.log(err);
             }
         };
-        fetchPlayerList();
-    }, []);
-
-    const submitPoints = async (e) => {
-        e.preventDefault();
-        try {
-            let params = { 'round': roundNumber, 'roundInfo': roundInfo };
-            await axios.post("http://192.168.2.45:8800/rounds", params)
-            .then((response) => {
-                navigate("/");
-            });
-        } catch (err) {
-            console.log(err);
-        }
     };
 
     return (

@@ -8,20 +8,43 @@ const TotalPoints = () => {
 
     //#region const
     const [points, setPoints] = useState([]);
+    const [token, setToken] = useState(null);
     const navigate = useNavigate();
     //#endregion const
 
     useEffect(() => {
+        const getToken = async () => {
+            if (token === null) {
+                try {
+                    const headerAxios = {
+                        "Authorization": `Bearer ` + process.env.REACT_APP_JWTKEYDOCARALHO,
+                        "userid": process.env.REACT_APP_JWTUSRDOCARALHO,
+                        "passw": process.env.REACT_APP_JWTPWDDOCARALHO
+                    }
+                    const res = await axios.get("http://server2.noslined.com.br:9090/authToken", { headers: headerAxios });
+                    setToken(res.data.token);
+                } catch (err) {
+                    console.log(err);
+                }
+            };
+        }
+        getToken();
+    }, [token]);
+
+    useEffect(() => {
         const fetchAllPoints = async () => {
-            try {
-                const res = await axios.get("http://server2.noslined.com.br:9090/totalPoints");
-                setPoints(res.data);
-            } catch (err) {
-                console.log(err);
-            }
-        };
+            if (token !== null) {
+                try {
+                    const headerAxiosPoints = { headers: { "authorization": `Bearer ` + token } };
+                    const res = await axios.get("http://server2.noslined.com.br:9090/totalPointsSec", headerAxiosPoints);
+                    setPoints(res.data);
+                } catch (err) {
+                    console.log(err);
+                }
+            };
+        }
         fetchAllPoints();
-    }, []);
+    }, [token]);
 
     //#region functions
     function handleSubmit(event, playerID) {

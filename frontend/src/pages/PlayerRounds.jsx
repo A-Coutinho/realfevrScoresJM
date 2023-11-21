@@ -14,6 +14,26 @@ const PlayerRounds = () => {
     const params = useParams();
     const navigate = useNavigate();
     const [showChart, setShowChart] = useState(false);
+    const [token, setToken] = useState(null);
+
+    useEffect(() => {
+        const getToken = async () => {
+            if (token === null) {
+                try {
+                    const headerAxios = {
+                        "Authorization": `Bearer ` + process.env.REACT_APP_JWTKEYDOCARALHO,
+                        "userid": process.env.REACT_APP_JWTUSRDOCARALHO,
+                        "passw": process.env.REACT_APP_JWTPWDDOCARALHO
+                    }
+                    const res = await axios.get("http://server2.noslined.com.br:9090/authToken", { headers: headerAxios });
+                    setToken(res.data.token);
+                } catch (err) {
+                    console.log(err);
+                }
+            };
+        }
+        getToken();
+    }, [token]);
 
     function goHome(event) {
         event.preventDefault();
@@ -32,29 +52,32 @@ const PlayerRounds = () => {
     }
 
     useEffect(() => {
-        const axiosURL = "http://server2.noslined.com.br:9090/playerRounds/" + params.player;
-        const fetchAllPoints = async () => {
-            try {
-                const res = await axios.get(axiosURL);
-                setPoints(res.data);
-                getAverage(res.data.map(p => p.points));
-            } catch (err) {
-                console.log(err);
-            }
-        };
-        fetchAllPoints();
+        if (token !== null) {
+        const headerAxios = { headers: { "authorization": `Bearer ` + token } };
+        const axiosURL = "http://server2.noslined.com.br:9090/playerRoundsSec/" + params.player;
+            const fetchAllPoints = async () => {
+                try {
+                    const res = await axios.get(axiosURL, headerAxios);
+                    setPoints(res.data);
+                    getAverage(res.data.map(p => p.points));
+                } catch (err) {
+                    console.log(err);
+                }
+            };
+            fetchAllPoints();
 
-        const axiosURLPlayer = "http://server2.noslined.com.br:9090/players/" + params.player;
-        const fetchPlayer = async () => {
-            try {
-                const res = await axios.get(axiosURLPlayer);
-                setPlayer(res.data[0]["name"]);
-            } catch (err) {
-                console.log(err);
-            }
+            const axiosURLPlayer = "http://server2.noslined.com.br:9090/playersSec/" + params.player;
+            const fetchPlayer = async () => {
+                try {
+                    const res = await axios.get(axiosURLPlayer, headerAxios);
+                    setPlayer(res.data[0]["name"]);
+                } catch (err) {
+                    console.log(err);
+                }
+            };
+            fetchPlayer();
         };
-        fetchPlayer();
-    }, [params]);
+    }, [params, token]);
 
     return (
         <div>

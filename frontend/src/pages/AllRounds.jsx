@@ -5,10 +5,30 @@ import './../scss/allRounds.scss';
 import { useNavigate } from "react-router-dom";
 
 const AllRounds = () => {
-    
+
     const [rounds, setRounds] = useState([]);
     const [pageNumber, setCount] = useState(1);
     const navigate = useNavigate();
+    const [token, setToken] = useState(null);
+
+    useEffect(() => {
+        const getToken = async () => {
+            if (token === null) {
+                try {
+                    const headerAxios = {
+                        "Authorization": `Bearer ` + process.env.REACT_APP_JWTKEYDOCARALHO,
+                        "userid": process.env.REACT_APP_JWTUSRDOCARALHO,
+                        "passw": process.env.REACT_APP_JWTPWDDOCARALHO
+                    }
+                    const res = await axios.get("http://server2.noslined.com.br:9090/authToken", { headers: headerAxios });
+                    setToken(res.data.token);
+                } catch (err) {
+                    console.log(err);
+                }
+            };
+        }
+        getToken();
+    }, [token]);
 
     const [numberOfRounds, setNumberOfRounds] = useState(1);
 
@@ -39,27 +59,30 @@ const AllRounds = () => {
 
 
     useEffect(() => {
-        const fetchWeeklyWinnersList = async () => {
-            try {
-                const res = await axios.get("http://server2.noslined.com.br:9090/numberOfRounds");
-                setNumberOfRounds(res.data['numberofrounds']);
-            } catch (err) {
-                console.log(err);
-            }
-        };
-        fetchWeeklyWinnersList();
+        if (token !== null) {
+            const headerAxios = { headers: { "authorization": `Bearer ` + token } };
+            const fetchWeeklyWinnersList = async () => {
+                try {
+                    const res = await axios.get("http://server2.noslined.com.br:9090/numberOfRoundsSec", headerAxios);
+                    setNumberOfRounds(res.data['numberofrounds']);
+                } catch (err) {
+                    console.log(err);
+                }
+            };
+            fetchWeeklyWinnersList();
 
-        const axiosURL = "http://server2.noslined.com.br:9090/allRounds/" + pageNumber;
-        const fetchRound = async () => {
-            try {
-                const res = await axios.get(axiosURL);
-                setRounds(res.data);
-            } catch (err) {
-                console.log(err);
-            }
+            const axiosURL = "http://server2.noslined.com.br:9090/allRoundsSec/" + pageNumber;
+            const fetchRound = async () => {
+                try {
+                    const res = await axios.get(axiosURL, headerAxios);
+                    setRounds(res.data);
+                } catch (err) {
+                    console.log(err);
+                }
+            };
+            fetchRound();
         };
-        fetchRound();
-    }, [pageNumber]);
+    }, [pageNumber, token]);
 
     function goHome(event) {
         event.preventDefault();
