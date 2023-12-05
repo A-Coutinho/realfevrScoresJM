@@ -20,7 +20,7 @@ const AllRounds = () => {
                         "userid": process.env.REACT_APP_JWTUSRDOCARALHO,
                         "passw": process.env.REACT_APP_JWTPWDDOCARALHO
                     }
-                    const res = await axios.get("http://server2.noslined.com.br:9090/authToken", { headers: headerAxios });
+                    const res = await axios.get("https://antonioapp.noslined.com.br/authToken", { headers: headerAxios });
                     setToken(res.data.token);
                 } catch (err) {
                     console.log(err);
@@ -71,7 +71,7 @@ const AllRounds = () => {
             };
             fetchWeeklyWinnersList();
 
-            const axiosURL = "http://server2.noslined.com.br:9090/allRoundsSec/" + pageNumber;
+            const axiosURL = "https://antonioapp.noslined.com.br/allRoundsSec/" + pageNumber;
             const fetchRound = async () => {
                 try {
                     const res = await axios.get(axiosURL, headerAxios);
