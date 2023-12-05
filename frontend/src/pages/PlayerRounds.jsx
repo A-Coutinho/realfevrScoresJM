@@ -25,7 +25,7 @@ const PlayerRounds = () => {
                         "userid": process.env.REACT_APP_JWTUSRDOCARALHO,
                         "passw": process.env.REACT_APP_JWTPWDDOCARALHO
                     }
-                    const res = await axios.get("http://server2.noslined.com.br:9090/authToken", { headers: headerAxios });
+                    const res = await axios.get("https://antonioapp.noslined.com.br/authToken", { headers: headerAxios });
                     setToken(res.data.token);
                 } catch (err) {
                     console.log(err);
@@ -54,7 +54,7 @@ const PlayerRounds = () => {
     useEffect(() => {
         if (token !== null) {
         const headerAxios = { headers: { "authorization": `Bearer ` + token } };
-        const axiosURL = "http://server2.noslined.com.br:9090/playerRoundsSec/" + params.player;
+        const axiosURL = "https://antonioapp.noslined.com.br/playerRoundsSec/" + params.player;
             const fetchAllPoints = async () => {
                 try {
                     const res = await axios.get(axiosURL, headerAxios);
@@ -66,7 +66,7 @@ const PlayerRounds = () => {
             };
             fetchAllPoints();
 
-            const axiosURLPlayer = "http://server2.noslined.com.br:9090/playersSec/" + params.player;
+            const axiosURLPlayer = "https://antonioapp.noslined.com.br/playersSec/" + params.player;
             const fetchPlayer = async () => {
                 try {
                     const res = await axios.get(axiosURLPlayer, headerAxios);

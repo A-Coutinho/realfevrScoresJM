@@ -20,7 +20,7 @@ const RoundsWinners = () => {
                         "userid": process.env.REACT_APP_JWTUSRDOCARALHO,
                         "passw": process.env.REACT_APP_JWTPWDDOCARALHO
                     }
-                    const res = await axios.get("http://server2.noslined.com.br:9090/authToken", { headers: headerAxios });
+                    const res = await axios.get("https://antonioapp.noslined.com.br/authToken", { headers: headerAxios });
                     setToken(res.data.token);
                 } catch (err) {
                     console.log(err);
@@ -35,7 +35,7 @@ const RoundsWinners = () => {
             const headerAxios = { headers: { "authorization": `Bearer ` + token } };
             const fetchWeeklyList = async () => {
                 try {
-                    const res = await axios.get("http://server2.noslined.com.br:9090/roundsWinnersSec", headerAxios);
+                    const res = await axios.get("https://antonioapp.noslined.com.br/roundsWinnersSec", headerAxios);
                     setPoints(res.data);
                 } catch (err) {
                     console.log(err);
@@ -45,7 +45,7 @@ const RoundsWinners = () => {
 
             const fetchWeeklyWinnersList = async () => {
                 try {
-                    const res = await axios.get("http://server2.noslined.com.br:9090/roundsWinnersByTimesSec", headerAxios);
+                    const res = await axios.get("https://antonioapp.noslined.com.br/roundsWinnersByTimesSec", headerAxios);
                     setPointsWinners(res.data);
                 } catch (err) {
                     console.log(err);

@@ -63,7 +63,7 @@ const AllRounds = () => {
             const headerAxios = { headers: { "authorization": `Bearer ` + token } };
             const fetchWeeklyWinnersList = async () => {
                 try {
-                    const res = await axios.get("http://server2.noslined.com.br:9090/numberOfRoundsSec", headerAxios);
+                    const res = await axios.get("https://antonioapp.noslined.com.br/numberOfRoundsSec", headerAxios);
                     setNumberOfRounds(res.data['numberofrounds']);
                 } catch (err) {
                     console.log(err);
