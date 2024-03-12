@@ -290,7 +290,7 @@ app.get("/playerRoundsSec/:player", ensureToken, (req, res) => {
             res.sendStatus(403);
         }
         else {
-            const q = "select number, points from rounds where playerid = @playerparam";
+            const q = "select number, points from rounds where playerid = @playerparam order by number";
             sql.connect(sqlConfig, function (err) {
                 if (err) console.log(err);
                 var request = new sql.Request();
