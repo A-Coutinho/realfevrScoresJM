@@ -88,7 +88,7 @@ const RoundsWinners = () => {
                             <tbody>
                                 {points.map((item, index) => (
                                     <tr key={index + 1}>
-                                        <td className='round'>{index + 1}</td>
+                                        <td className='round'>{item["number"]}</td>
                                         <td className='team'>{item["NAME"]}</td>
                                         <td className='points'>{item["points"]}</td>
                                     </tr>
